@@ -10,6 +10,7 @@ function addToCart(id) {
     qtd: cart[id]?.qtd + 1 || 1,
   }
   localStorage.setItem("carrinho", JSON.stringify(cart));
+  // call db to add to cart
 }
 
 function removeFromCart(id) {
@@ -32,9 +33,11 @@ function removeFromCart(id) {
   };
 
   localStorage.setItem("carrinho", JSON.stringify(cart));
+    // call db to revemove from cart
 }
 
 function clear() {
   localStorage.setItem("carrinho", JSON.stringify({}));
+      // call db to clear from cart
 }
 export { addToCart, removeFromCart, clear };

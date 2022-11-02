@@ -13,7 +13,7 @@ function isEmpty(obj) {
 function intoArray(obj) {
   return Object.keys(obj).map((id) => obj[id])
 }
-async function getProducts() {
+export async function getProducts(phpFile = './hidrateData.php' ) {
   let cart = localStorage.getItem("carrinho") || {};
   if (typeof cart == "string") cart = JSON.parse(cart)
   if (isEmpty(cart)) {
@@ -22,7 +22,7 @@ async function getProducts() {
       cart
     };
   }
-  const { data, error } = await query(`./hidrateData.php`, {
+  const { data, error } = await query(phpFile, {
     method: "POST",
     extraHeaders: {
       "Content-Type": "form-data",
@@ -57,23 +57,27 @@ function renderProducts(products, cart) {
     .join("");
   render("cart", ui);
 }
-async function onMount(){
-  const { products, cart } = await getProducts();
-  renderProducts(products, cart);
-  const total = products.reduce(
-    (acc, product) => acc + cart[product.id].qtd * product.valor,
-    0
-  );
+function renderTotal(total) {
   if (total === 0) render("total", "");
   else render(
     "total",
     `
   <h2>Total: R$ ${total}<h2/>
-  <button onclick="clearCart()">
-        Finalizar compra
+  <button>
+    <a href="./checkout">Finalizar compra</a>
   </button>
+
   `
   );
+}
+async function onMount(){
+  const { products, cart } = await getProducts("./hidrateData.php");
+  const total = products.reduce(
+    (acc, product) => acc + cart[product.id].qtd * product.valor,
+    0
+  );
+  renderProducts(products, cart);
+  renderTotal(total);
 }
 
 
@@ -86,8 +90,5 @@ window.removeFromCart = function(id) {
   cart.removeFromCart(id);
   onMount();
 }
-window.clearCart = function() {
-  cart.clear();
-  onMount();
-}
+
 window.onload = onMount

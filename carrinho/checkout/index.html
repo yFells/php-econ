@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <script defer type="module" src="./script.js"></script>
+</head>
+<body>
+  <h1>Checkout</h1>
+  <a href="../">
+    Voltar ao carrinho
+  </a>
+  <br />
+  <a href="../../produtos">
+    ir para produtos
+  </a>
+  <br />
+  <a href="../../">
+    ir para home
+  </a>
+  <div id="total">
+    Total: 
+      <div class="loader">
+        Carregando...
+      </div>
+  </div>
+  <form id="form" onsubmit="submitPayment(event)">
+    <div class="form-group">
+      <label for="cardNumber">Número do cartão</label>
+      <input type="number" class="form-control" id="cardNumber" placeholder="Número do cartão">
+
+      <div class="invalid-feedback">
+        Número do cartão inválido
+      </div>  
+    </div>
+    <div class="form-group">
+      <label for="cardName">Nome do titular</label>
+      <input type="text" class="form-control" id="cardName" placeholder="Nome do titular">
+      <div class="invalid-feedback">
+        Nome do titular inválido
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cardExpiry">Validade</label>
+      <input type="date" class="form-control" id="cardExpiry" placeholder="Validade">
+      <div class="invalid-feedback">
+        Validade inválida
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cardCVC">Código de segurança</label>
+      <input type="number" class="form-control" id="cardCVC" placeholder="Código de segurança">
+      <div class="invalid-feedback">
+        Código de segurança inválido
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Finalizar compra</button>
+  </form>
+</body>
+</html>
