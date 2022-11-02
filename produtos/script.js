@@ -10,10 +10,12 @@ import {
  * 
  * @param {object[]} products 
  * @param {number} products.id
- * @param {string} products.name
- * @param {string} products.description
- * @param {number} products.price
- * @param {string} products.image
+ * @param {string} products.nome
+ * @param {string} products.descricao
+ * @param {number} products.valor
+ * @param {string} products.url
+ * @param {string} products.marca
+ * @param {string} products.tipo
  * 
  */
 function populateProducts(products) {
@@ -21,9 +23,9 @@ function populateProducts(products) {
     .map((product) => {
       return `
     <li>
-      Produto: ${product.name}
+      Produto: ${product.nome}
       <br>
-      Preço: ${product.price}
+      Preço: ${product.valor}
       <br>
       id: ${product.id}
     </li>
