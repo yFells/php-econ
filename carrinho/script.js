@@ -64,7 +64,16 @@ async function onMount(){
     (acc, product) => acc + cart[product.id].qtd * product.valor,
     0
   );
-  render("total", `Total: R$ ${total}`);
+  if (total === 0) render("total", "");
+  else render(
+    "total",
+    `
+  <h2>Total: R$ ${total}<h2/>
+  <button onclick="clearCart()">
+        Finalizar compra
+  </button>
+  `
+  );
 }
 
 
