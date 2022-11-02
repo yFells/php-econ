@@ -1,5 +1,6 @@
 
 import {
+  getQueryParams,
   query,
   render,
 } from '../scripts/index.js'
@@ -106,6 +107,8 @@ function populateProducts(products) {
 }
 
 async function onMount(){
+  const { page } = getQueryParams();
+  console.log(page);
   const { data, error } = await query("./queryProducts.php");
   populateProducts(data);
 }
