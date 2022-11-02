@@ -47,4 +47,6 @@ $filtered = array_filter($mock, function($item) use ($dt) {
   return $dt[$item['id']];
 });
 
+// do a SELECT where using this ids -> array_keys($dt)
+
 echo json_encode($filtered);
