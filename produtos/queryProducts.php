@@ -29,6 +29,15 @@ $mock = [
     'url' => 'https://bobbyhadz.com/images/blog/javascript-syntaxerror-cannot-use-import-statement-outside-module/banner.webp',
     'marca' => 'Marca 3'
   ],
+  [
+    'id' => 4,
+    'nome' => 'Product 4',
+    'valor' => 40.0,
+    'descricao' => 'Product 4 description',
+    'tipo' => 'Category 4',
+    'url' => 'https://bobbyhadz.com/images/blog/javascript-syntaxerror-cannot-use-import-statement-outside-module/banner.webp',
+    'marca' => 'Marca 4'
+  ]
 ];
 
 echo json_encode($mock);
