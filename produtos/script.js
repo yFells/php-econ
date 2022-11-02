@@ -107,7 +107,6 @@ function populateProducts(products) {
 
 async function onMount(){
   const { data, error } = await query("./queryProducts.php");
-  console.log(data);
   populateProducts(data);
 }
 
