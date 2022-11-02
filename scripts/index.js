@@ -1,11 +1,9 @@
-import { $ } from "./getElement.js";
-import { query } from "./queryIn.js";
-import { render } from "./render.js";
+import { $, render } from "./ui/index.js";
+import { query } from "./network/index.js";
 
 
 export {
   $,
   query,
   render,
-
 }
