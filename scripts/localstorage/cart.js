@@ -17,7 +17,7 @@ function removeFromCart(id) {
    * @type {*{}}
    */
   const cart = JSON.parse(localStorage.getItem("carrinho")) || {};
-  if (cart[id]?.qtd === undefined ) {
+  if (cart[id]?.qtd === undefined) {
     return;
   }
 
@@ -28,9 +28,13 @@ function removeFromCart(id) {
   }
 
   cart[id] = {
-    qtd: cart[id]?.qtd - 1 ,
+    qtd: cart[id]?.qtd - 1,
   };
 
   localStorage.setItem("carrinho", JSON.stringify(cart));
 }
-export { addToCart, removeFromCart };
+
+function clear() {
+  localStorage.setItem("carrinho", JSON.stringify({}));
+}
+export { addToCart, removeFromCart, clear };
