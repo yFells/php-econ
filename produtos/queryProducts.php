@@ -1,5 +1,4 @@
 <?php
-$page = $_GET['page'];
 
 // get data from db
 $mock = [
