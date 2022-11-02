@@ -1,5 +1,6 @@
 
 function addToCart(id) {
+  // verify if is logged
   /**
    * @type {*[]}
    */
@@ -14,6 +15,7 @@ function addToCart(id) {
 }
 
 function removeFromCart(id) {
+    // verify if is logged
   /**
    * @type {*{}}
    */

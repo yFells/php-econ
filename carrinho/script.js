@@ -71,6 +71,7 @@ function renderTotal(total) {
   );
 }
 async function onMount(){
+  // verify if is logged
   const { products, cart } = await getProducts("./hidrateData.php");
   const total = products.reduce(
     (acc, product) => acc + cart[product.id].qtd * product.valor,
