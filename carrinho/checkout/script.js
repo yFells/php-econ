@@ -35,13 +35,13 @@ async function submitPayment(e) {
       "User-id" : "1",
     }
   });
-  
+
   if (error) {
     return alert(error);
   }
   form.reset();
   cart.clear();
-  render("form", "<h1>Compra realizada com sucesso!</h1>");
+  render("main", "<h1>Compra realizada com sucesso!</h1>");
 }
 window.submitPayment = submitPayment;
 window.onload = onMount;
