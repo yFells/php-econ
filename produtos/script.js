@@ -4,7 +4,23 @@ import {
   render,
 } from '../scripts/index.js'
 
+function addToCart(id) {
+  console.log(`adicionando ${id} ao carrinho`);
+}
 
+/**
+ * 
+ * @param {string} id 
+ * @param {string} text 
+ * @returns 
+ */
+const addToCartButton = (id, text) => {
+  return `
+  <button onclick="addToCart(${id})">
+    ${text}
+  </button>
+  `;
+}
 
 /**
  * 
@@ -28,6 +44,8 @@ function populateProducts(products) {
       Preço: ${product.valor}
       <br>
       id: ${product.id}
+      <br>
+      ${addToCartButton(product.id, "Adicionar ao carrinho")}
     </li>
     `;
     })
@@ -45,4 +63,6 @@ async function onMount(){
   console.log(data);
   populateProducts(data);
 }
+
+window.addToCart = addToCart
 window.onload = onMount
