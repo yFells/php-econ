@@ -1,7 +1,6 @@
 import { getProducts } from "../script.js";
-import { render, $ } from "../../scripts/ui/index.js";
+import { render, $, html } from "../../scripts/ui/index.js";
 import { query } from "../../scripts/network/queryIn.js";
-import { cart } from "../../scripts/localstorage/index.js";
 function renderTotal(total) {
   if (total === 0) render("total", "");
   else render("total", html`<h1>Total: R$ ${total}</h1>`);
@@ -10,6 +9,7 @@ function renderTotal(total) {
 async function onMount() {
   // verify is is logged in
   const { products } = await getProducts("../server/get-carrinho.php");
+  console.log(products);
   const total = products.reduce(
     (acc, product) => acc + product.qtd * product.valor,
     0
