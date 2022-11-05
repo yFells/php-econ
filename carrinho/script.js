@@ -13,12 +13,14 @@ function intoArray(obj) {
   return Object.keys(obj).map((id) => obj[id]);
 }
 export async function getProducts(phpFile = "./server/get-carrinho.php") {
+  const user = localStorage.getItem("user");
+  const userId = JSON.parse(user).id;
   const { data, error } = await query(phpFile, {
     method: "POST",
     extraHeaders: {
       "Content-Type": "form-data",
     },
-    body: JSON.stringify(cart),
+    body: JSON.stringify({userId}),
   });
   return {
     products: intoArray(data),
