@@ -20,6 +20,8 @@ async function onMount() {
 
 async function submitPayment(e) {
   e.preventDefault();
+  const user = localStorage.getItem("user");
+  const userId = JSON.parse(user).id;
   const formData = {
     cardNumber: $("cardNumber").value,
     cardName: $("cardName").value,
@@ -29,11 +31,9 @@ async function submitPayment(e) {
   // verify is is logged in
   const { data, error } = await query("./checkout.php", {
     method: "POST",
-    body: JSON.stringify(formData),
+    body: JSON.stringify({ formData, userId }),
     extraHeaders: {
       "Content-Type": "application/json",
-      // TODO: add user id
-      "User-id": "1",
     },
   });
 
