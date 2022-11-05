@@ -12,7 +12,7 @@ function isEmpty(obj) {
 function intoArray(obj) {
   return Object.keys(obj).map((id) => obj[id]);
 }
-export async function getProducts(phpFile = "./hidrateData.php") {
+export async function getProducts(phpFile = "./server/get-carrinho.php") {
   let cart = localStorage.getItem("carrinho") || {};
   if (typeof cart == "string") cart = JSON.parse(cart);
   if (isEmpty(cart)) {
@@ -28,6 +28,7 @@ export async function getProducts(phpFile = "./hidrateData.php") {
     },
     body: JSON.stringify(cart),
   });
+  console.log(data);
   return {
     products: intoArray(data),
     cart,
@@ -73,7 +74,7 @@ function renderTotal(total) {
 }
 async function onMount() {
   // verify if is logged
-  const { products, cart } = await getProducts("./hidrateData.php");
+  const { products, cart } = await getProducts("./server/get-carrinho.php");
   const total = products.reduce(
     (acc, product) => acc + cart[product.id].qtd * product.valor,
     0
