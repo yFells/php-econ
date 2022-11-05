@@ -4,4 +4,4 @@
  * @param {ui} string 
  * @returns {string}
  */
-export const html = ([ui, args]) => ui
+export const html = (strings, ...values) => String.raw({ raw: strings }, ...values);

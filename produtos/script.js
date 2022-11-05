@@ -13,7 +13,7 @@ import { cart } from "../scripts/localstorage/index.js";
  * @returns 
  */
 const addToCartButton = (id, text) => {
-  return html` <button onclick="addToCart(${id})">${text}</button> `;
+  return html`<button onclick="addToCart(${id})">${text}</button> `;
 }
 
 /**
@@ -23,7 +23,7 @@ const addToCartButton = (id, text) => {
  * @returns 
  */
  const removeFromCartButton = (id, text) => {
-  return html` <button onclick="removeFromCart(${id})">${text}</button> `;
+  return html`<button onclick="removeFromCart(${id})">${text}</button> `;
 }
 /**
  * 
@@ -40,7 +40,6 @@ const addToCartButton = (id, text) => {
 function populateProducts(products) {
   const ui = products
     .map((product) => {
-
       return html`
     <li>
       Produto: ${product.nome}
@@ -55,7 +54,6 @@ function populateProducts(products) {
     `;
     })
     .join("");
-
   render(
     "products",
     html`

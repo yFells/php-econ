@@ -4,7 +4,7 @@ import { query } from "../../scripts/network/queryIn.js";
 import {cart} from "../../scripts/localstorage/index.js";
 function renderTotal(total) {
   if (total === 0) render("total", "");
-  else render("total", `<h1>Total: R$ ${total}</h1>`);
+  else render("total", html`<h1>Total: R$ ${total}</h1>`);
 }
 
 async function onMount (){
@@ -42,7 +42,7 @@ async function submitPayment(e) {
   }
   form.reset();
   cart.clear();
-  render("main", "<h1>Compra realizada com sucesso!</h1>");
+  render("main", html`<h1>Compra realizada com sucesso!</h1>`);
 }
 window.submitPayment = submitPayment;
 window.onload = onMount;

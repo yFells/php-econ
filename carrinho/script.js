@@ -1,6 +1,6 @@
 
 import { query } from "../scripts/network/index.js";
-import { render } from "../scripts/ui/index.js";
+import { render, html } from "../scripts/ui/index.js";
 import { cart } from "../scripts/localstorage/index.js";
 
 function isEmpty(obj) {
