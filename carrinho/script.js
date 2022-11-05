@@ -1,25 +1,24 @@
-
 import { query } from "../scripts/network/index.js";
 import { render, html } from "../scripts/ui/index.js";
 import { cart } from "../scripts/localstorage/index.js";
 
 function isEmpty(obj) {
   return (
-    obj && 
+    obj &&
     Object.keys(obj).length === 0 &&
     Object.getPrototypeOf(obj) === Object.prototype
   );
 }
 function intoArray(obj) {
-  return Object.keys(obj).map((id) => obj[id])
+  return Object.keys(obj).map((id) => obj[id]);
 }
-export async function getProducts(phpFile = './hidrateData.php' ) {
+export async function getProducts(phpFile = "./hidrateData.php") {
   let cart = localStorage.getItem("carrinho") || {};
-  if (typeof cart == "string") cart = JSON.parse(cart)
+  if (typeof cart == "string") cart = JSON.parse(cart);
   if (isEmpty(cart)) {
     return {
       products: [],
-      cart
+      cart,
     };
   }
   const { data, error } = await query(phpFile, {
@@ -58,20 +57,21 @@ function renderProducts(products, cart) {
 }
 function renderTotal(total) {
   if (total === 0) render("total", "");
-  else render(
-    "total",
-    html`
-      <h2>
-        Total: R$ ${total}
-        <h2 />
-        <button>
-          <a href="./checkout">Finalizar compra</a>
-        </button>
-      </h2>
-    `
-  );
+  else
+    render(
+      "total",
+      html`
+        <h2>
+          Total: R$ ${total}
+          <h2 />
+          <button>
+            <a href="./checkout">Finalizar compra</a>
+          </button>
+        </h2>
+      `
+    );
 }
-async function onMount(){
+async function onMount() {
   // verify if is logged
   const { products, cart } = await getProducts("./hidrateData.php");
   const total = products.reduce(
@@ -82,15 +82,19 @@ async function onMount(){
   renderTotal(total);
 }
 
-
-window.addToCart = function(id) {
-  cart.addToCart(id);
+window.addToCart = async function (id) {
+  cart.addToCart(id); // local
+  const { data, error } = await query("./server/add-carrinho.php", {
+    body: JSON.stringify({id}),
+    method: "POST",
+  });
+  console.log(data);
   onMount();
-} 
+};
 
-window.removeFromCart = function(id) {
+window.removeFromCart = function (id) {
   cart.removeFromCart(id);
   onMount();
-}
+};
 
-window.onload = onMount
+window.onload = onMount;

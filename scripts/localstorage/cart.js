@@ -1,3 +1,4 @@
+import { query } from "../network";
 
 function addToCart(id) {
   // verify if is logged
