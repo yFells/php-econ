@@ -1,4 +1,5 @@
 
 import { $ } from "./getElement.js";
 import { render } from "./render.js";
-export { $, render };
+import { html } from "./html.js";
+export { $, render, html };

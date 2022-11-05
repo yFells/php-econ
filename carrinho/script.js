@@ -36,23 +36,22 @@ export async function getProducts(phpFile = './hidrateData.php' ) {
 }
 function renderProducts(products, cart) {
   if (products.length === 0) {
-    render("cart", `<h1>Carrinho vazio</h1>`);
+    render("cart", html`<h1>Carrinho vazio</h1>`);
     return;
   }
 
   const ui = products
     .map((product) => {
-      return `
-  <div class="product">
-    <img src="${product.url}" alt="${product.nome}" />
-    <h2>${product.nome}</h2>
-    <p>${product.descricao}</p>
-    <p>R$ ${product.valor}</p> 
-    <p>Quantidade: ${cart[product.id].qtd}</p>
-    <p>Subtotal: R$ ${cart[product.id].qtd * product.valor}</p>
-    <button onclick="addToCart(${product.id})">Adicionar mais um</button>
-    <button onclick="removeFromCart(${product.id})">Remover</button>
-  </div>`;
+      return html` <div class="product">
+        <img src="${product.url}" alt="${product.nome}" />
+        <h2>${product.nome}</h2>
+        <p>${product.descricao}</p>
+        <p>R$ ${product.valor}</p>
+        <p>Quantidade: ${cart[product.id].qtd}</p>
+        <p>Subtotal: R$ ${cart[product.id].qtd * product.valor}</p>
+        <button onclick="addToCart(${product.id})">Adicionar mais um</button>
+        <button onclick="removeFromCart(${product.id})">Remover</button>
+      </div>`;
     })
     .join("");
   render("cart", ui);
@@ -61,13 +60,15 @@ function renderTotal(total) {
   if (total === 0) render("total", "");
   else render(
     "total",
+    html`
+      <h2>
+        Total: R$ ${total}
+        <h2 />
+        <button>
+          <a href="./checkout">Finalizar compra</a>
+        </button>
+      </h2>
     `
-  <h2>Total: R$ ${total}<h2/>
-  <button>
-    <a href="./checkout">Finalizar compra</a>
-  </button>
-
-  `
   );
 }
 async function onMount(){

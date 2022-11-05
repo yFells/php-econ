@@ -1,7 +1,7 @@
 
 
 import { query } from "../scripts/network/index.js";
-import { render } from "../scripts/ui/index.js";
+import { render, html } from "../scripts/ui/index.js";
 import { cart } from "../scripts/localstorage/index.js";
 
 
@@ -13,11 +13,7 @@ import { cart } from "../scripts/localstorage/index.js";
  * @returns 
  */
 const addToCartButton = (id, text) => {
-  return `
-  <button onclick="addToCart(${id})">
-    ${text}
-  </button>
-  `;
+  return html` <button onclick="addToCart(${id})">${text}</button> `;
 }
 
 /**
@@ -27,11 +23,7 @@ const addToCartButton = (id, text) => {
  * @returns 
  */
  const removeFromCartButton = (id, text) => {
-  return `
-  <button onclick="removeFromCart(${id})">
-    ${text}
-  </button>
-  `;
+  return html` <button onclick="removeFromCart(${id})">${text}</button> `;
 }
 /**
  * 
@@ -48,7 +40,8 @@ const addToCartButton = (id, text) => {
 function populateProducts(products) {
   const ui = products
     .map((product) => {
-      return `
+
+      return html`
     <li>
       Produto: ${product.nome}
       <br>
@@ -63,11 +56,14 @@ function populateProducts(products) {
     })
     .join("");
 
-  render("products", `
-  <ul>
-    ${ui}
-  </ul>
-  `);
+  render(
+    "products",
+    html`
+      <ul>
+        ${ui}
+      </ul>
+    `
+  );
 }
 
 async function onMount(){
