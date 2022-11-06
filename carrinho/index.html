@@ -5,29 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrinho</title>
+  <link rel="stylesheet" href="./style.css">
   <script defer type="module" src="./script.js"></script>
 </head>
 <body>
-  <h1>Carrinho</h1>
-  <a href="../produtos">
-    ir para produtos
-  </a>
-  <br />
-  <a href="../">
-    ir para home
-  </a>
-  <div id="cart">
+  <header>
+    <nav>
+      <h1>Carrinho</h1>
+      <a href="../produtos">
+        ir para produtos
+      </a>
+      <br />
+      <a href="../">
+        ir para home
+      </a>
+    </nav>
+    <div id="total">
+      Total: 
+        <div class="loader">
+          Carregando...
+        </div>
+        
+      </div>
+  </header>
+  
+  <main id="cart">
     <div class="loader">
       Carregando...
     </div>
-  </div>
-  <div id="total">
-    Total: 
-      <div class="loader">
-        Carregando...
-      </div>
-      
-    </div>
+  </main>
+  
   
 </body>
 </html>

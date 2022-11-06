@@ -1,6 +1,6 @@
 import { query } from "../scripts/network/index.js";
 import { render, html } from "../scripts/ui/index.js";
-
+import { ProductCard } from "../produtos/ProductCard/index.js";
 function isEmpty(obj) {
   return (
     obj &&
@@ -19,7 +19,7 @@ export async function getProducts(phpFile = "./server/get-carrinho.php") {
     extraHeaders: {
       "Content-Type": "form-data",
     },
-    body: JSON.stringify({userId}),
+    body: JSON.stringify({ userId }),
   });
   console.log(data);
   return {
@@ -32,20 +32,20 @@ function renderProducts(products) {
     return;
   }
 
-  const ui = products
-    .map((product) => {
-      return html` <div class="product">
-        <img src="${product.url}" alt="${product.nome}" />
-        <h2>${product.nome}</h2>
-        <p>${product.descricao}</p>
-        <p>R$ ${product.valor}</p>
-        <p>Quantidade: ${product.qtd}</p>
-        <p>Subtotal: R$ ${product.qtd * product.valor}</p>
-        <button onclick="addToCart(${product.id})">Adicionar mais um</button>
-        <button onclick="removeFromCart(${product.id})">Remover</button>
-      </div>`;
-    })
-    .join("");
+  const ui = products.reduce((acc, product) => {
+    const childrenUi = html`
+      <div class="card-content">
+        <p>
+          <b>No carrinho:</b>
+          <br />
+          - Quantidade: <b> ${product.qtd} </b>
+          <br />
+          - Subtotal: <b> R$ ${product.qtd * product.valor}</b>
+        </p>
+      </div>
+    `;
+    return acc + ProductCard({ product, childrenUi });
+  }, "");
   render("cart", ui);
 }
 function renderTotal(total) {
