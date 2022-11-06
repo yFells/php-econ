@@ -1,6 +1,31 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--secondary-gray);
+  scrollbar-color: var(--secondary-blue); 
+}
 
+html {
+  overflow-x: hidden;
+  padding: 0 10px;
+}
+a {
+  all: unset;
+  cursor: pointer;
+}
+button {
+  all: unset;
+}
+
+:root {
+  --primary-black: #272932;
+  --primary-blue: #4D7EA8;
+  --primary-grey: #828489;
+  --secondary-gray: #CED4D9;
+  --secondary-blue: #B6C2D9;
+  font-family: Arial, Helvetica, sans-serif;
+}
 img {
-  /* make all imgs max 300px */
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 200px;
+  max-height: 200px;
 }
