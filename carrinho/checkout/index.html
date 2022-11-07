@@ -33,39 +33,16 @@
         Carregando...
       </div>
     </div>
-    <!-- Adicionar pix-->
-    <form id="form" onsubmit="submitPayment(event)">
-      <div class="form-group">
-        <label for="cardNumber">Número do cartão</label>
-        <input type="number" class="form-control" id="cardNumber" placeholder="Número do cartão">
 
-        <div class="invalid-feedback">
-          Número do cartão inválido
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cardName">Nome do titular</label>
-        <input type="text" class="form-control" id="cardName" placeholder="Nome do titular">
-        <div class="invalid-feedback">
-          Nome do titular inválido
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cardExpiry">Validade</label>
-        <input type="date" class="form-control" id="cardExpiry" placeholder="Validade">
-        <div class="invalid-feedback">
-          Validade inválida
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cardCVC">Código de segurança</label>
-        <input type="number" class="form-control" id="cardCVC" placeholder="Código de segurança">
-        <div class="invalid-feedback">
-          Código de segurança inválido
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Finalizar compra</button>
-    </form>
+    <div class="action-section">
+      <button onclick="submitPayment('pix')">
+        Pagar com Pix
+      </button>
+      <button onclick="submitPayment('credito')">
+        Pagar com Cartão
+      </button>
+    </div>
+   
   </main>
 
 </body>

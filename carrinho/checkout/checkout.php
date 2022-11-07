@@ -1,10 +1,11 @@
 <?php
 
 $dt = json_decode(file_get_contents('php://input'), true);
-$formData = $dt['formData'];
 $userId = $dt['userId'];
 // insert in the db this data and clear current cart
-// formData inclueds the data of the form and als
+$type = $dt['type'];
+// ^^ this is the type of payment can be 'pix' or 'credit' 
+
 
 
 echo json_encode($dt);

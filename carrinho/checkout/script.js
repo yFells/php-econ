@@ -17,30 +17,28 @@ async function onMount() {
 
   renderTotal(total);
 }
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function submitPayment(e) {
-  e.preventDefault();
+async function submitPayment(type) {
   const user = localStorage.getItem("user");
   const userId = JSON.parse(user).id;
-  const formData = {
-    cardNumber: $("cardNumber").value,
-    cardName: $("cardName").value,
-    cardExpiry: $("cardExpiry").value,
-    cardCVC: $("cardCVC").value,
-  };
   // verify is is logged in
   const { data, error } = await query("./checkout.php", {
     method: "POST",
-    body: JSON.stringify({ formData, userId }),
+    body: JSON.stringify({ userId, type }),
     extraHeaders: {
       "Content-Type": "application/json",
     },
   });
-
+  // open in another tab
+  
   if (error) {
-    return alert(error);
+    return console.log(error);
   }
-  form.reset();
+
+  render("main", html`<h1>Você será redirecionado a um site parceiro</h1>`);
+  window.open("https://stripe.com/en-br", "_blank");
+  await sleep(5000);
   render("main", html`<h1>Compra realizada com sucesso!</h1>`);
 }
 window.submitPayment = submitPayment;
