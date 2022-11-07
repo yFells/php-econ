@@ -1,25 +1,7 @@
 import { query } from "../scripts/network/index.js";
 import { render, html } from "../scripts/ui/index.js";
+import { ProductCard } from "./ProductCard/index.js";
 
-/**
- *
- * @param {string} id
- * @param {string} text
- * @returns
- */
-const addToCartButton = (id, text) => {
-  return html`<button onclick="addToCart(${id})">${text}</button> `;
-};
-
-/**
- *
- * @param {string} id
- * @param {string} text
- * @returns
- */
-const removeFromCartButton = (id, text) => {
-  return html`<button onclick="removeFromCart(${id})">${text}</button> `;
-};
 /**
  *
  * @param {object[]} products
@@ -33,30 +15,11 @@ const removeFromCartButton = (id, text) => {
  *
  */
 function populateProducts(products) {
-  const ui = products
-    .map((product) => {
-      return html`
-        <li>
-          Produto: ${product.nome}
-          <br />
-          Preço: ${product.valor}
-          <br />
-          id: ${product.id}
-          <br />
-          ${addToCartButton(product.id, "Adicionar ao carrinho")}
-          ${removeFromCartButton(product.id, "Remover do carrinho")}
-        </li>
-      `;
-    })
-    .join("");
-  render(
-    "products",
-    html`
-      <ul>
-        ${ui}
-      </ul>
-    `
-  );
+  const ui = products.reduce((acc, product) => {
+    return acc + ProductCard({ product });;
+  }, "");
+
+  render("products", ui);
 }
 
 async function onMount() {
@@ -64,7 +27,7 @@ async function onMount() {
   populateProducts(data);
 }
 
-window.addToCart = async function(id) {
+window.addToCart = async function (id) {
   const user = localStorage.getItem("user");
   const userId = JSON.parse(user).id;
   const { data, error } = await query("../carrinho/server/add-carrinho.php", {
@@ -72,15 +35,18 @@ window.addToCart = async function(id) {
     method: "POST",
   });
   onMount();
-}
-window.removeFromCart = async function(id) {
+};
+window.removeFromCart = async function (id) {
   const user = localStorage.getItem("user");
   const userId = JSON.parse(user).id;
-  const { data, error } = await query("../carrinho/server/remove-carrinho.php", {
-    body: JSON.stringify({ id, userId }),
-    method: "POST",
-  });
+  const { data, error } = await query(
+    "../carrinho/server/remove-carrinho.php",
+    {
+      body: JSON.stringify({ id, userId }),
+      method: "POST",
+    }
+  );
   onMount();
-}
+};
 
 window.onload = onMount;

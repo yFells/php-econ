@@ -1,0 +1,27 @@
+@import url('../styles/globals.css');
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  background: #fff;
+  text-align: start;
+  align-items: center;
+  border-top: 1px solid #000;
+  justify-content: space-around;
+}
+.card-content p {
+  margin: 10px;
+  background: #fff;
+}
+.card-content b {
+  background: #fff;
+}

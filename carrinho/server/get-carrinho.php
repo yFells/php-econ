@@ -1,6 +1,17 @@
 <?php
+$servername = "localhost:3306";
+$username = "root";
+$dbPassword = "";
+$dbName = "estoque";
+$conexao = mysqli_connect($servername, $username,$dbPassword,$dbName);
+
+
 $dt = json_decode(file_get_contents('php://input'), true);
 $id = $dt['userId'];
+
+
+$result = mysqli_query($conexao,"SELECT * FROM carrinho WHERE userId = $id") ;
+
 // select from carrinho where userId {3: {qtd: 3}, 5: {qtd:1}}
 // select na tabela de produtos where idprodutoCarrinho e traga os produtos 
 // pega o retorno da tabela e passa de volta pro front

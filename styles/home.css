@@ -1,0 +1,117 @@
+@import url('globals.css');
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.slogan {
+  display: flex;
+  border-radius: 15px;
+  color: var(--primary-black);
+}
+
+.navbar {
+  width: 100%;
+}
+
+.navbar>ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  margin: 2.5vh 0px;
+}
+
+.navbar img {
+  display: block;
+  width: 100px;
+  height: 70px;
+}
+
+.navbar a:nth-child(2) {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  color: var(--primary-black);
+  background: var(--primary-blue);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.navbar a:nth-child(2) {
+  color: var(--primary-black);
+  background: var(--primary-blue);
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25vw;
+  background: rgba(77, 126, 168, 0.43);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border: 1px solid rgba(77, 126, 168, 0.31);
+  color: white;
+}
+
+.cta p {
+  background: rgba(77, 126, 168, 0.43);
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
+}
+
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 40px auto;
+  width: 100%;
+}
+
+.testimonials article {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.testimonials img {
+  border-radius: 100%;
+}
+
+.contact {
+  margin: 5vw 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact address {
+  width: 40%;
+  line-height: 25px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.footer ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-content: flex-start;
+  width: 100%;
+  align-items: center;
+}
+.footer img {
+  max-width: 50px;
+}

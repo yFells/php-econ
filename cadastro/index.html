@@ -10,23 +10,20 @@
 </head>
 <body>
   <header class="header">
-    <a href="/">
-      <img src="../img/logo.svg" alt="logo">
-    </a>
-    <a href="/produtos" class="products"><span>Produtos</span></a>
-    <a href="/carrinho">
-      <img src="../img/cart.svg"  alt="carrinho">
-    </a>
+    <a href="/"><img src="../img/logo.svg" alt="logo gaming shop"></a>
+    <a href="/produtos/" class="products"><span>Produtos</span></a>
+    <a href="/carrinho/"><img src="../img/cart.svg" alt="carrinho"></a>
   </header>
   <div class="container form-container">
-    <div id="container-login">
-      <h1>Faça seu login</h1>
-      <form onsubmit="login(event)" class="base-form" id="form-login" method="post"> 
+    <div id="container-register">
+      <h1>Faça seu registro</h1>
+      <form onsubmit="event.preventDefault(); register()" class="base-form" id="form-register" method="post"> 
+        <input type="text" name="name" id="name" placeholder="Seu nome">
+        <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" maxlength="11"> 
         <input type="email" name="email" id="email" placeholder="Seu e-mail">
         <input type="password" name="password" id="password" placeholder="Sua senha">
-        <button type="submit" id="btn-login">Login</button>
+        <button type="submit" id="btn-register">Registrar</button>
       </form>  
-      <span class="register-text">Não possui cadastro? <a href="/cadastro">faça login aqui.</a></span>
     </div>
   </div>
 </body>
