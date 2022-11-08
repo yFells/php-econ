@@ -3,11 +3,24 @@ import { query } from "./../scripts/network/index.js";
 
 async function register(e) {
   try {
-    const registerForm = $("form-register");
+    const body = {
+    name: $("name").value,
+    email: $("email").value,
+    password: $("password").value,
+    cpf: $("cpf").value,
+    }
+    console.log(body);
     const { data, error } = await query("./register.php", {
-      body: new FormData(registerForm),
+      body: JSON.stringify({body}),
+      extraHeaders: {
+        "Content-Type": "application/json",
+      },
       method: "POST",
     });
+    console.log(data);
+    if (data) {
+      window.location = "/login"
+    }
   } catch (error) {
     console.log(error);
   }

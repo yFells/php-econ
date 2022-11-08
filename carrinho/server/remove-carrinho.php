@@ -10,13 +10,30 @@ $id = $dt['id'];
 $userId = $dt['userId'];
 
 //-------------- not ready yet ------------------------
+try {
+    $initial = "SELECT carrinho.content from carrinho Where id_user = $userId";
+    $result = $conexao -> query($initial);
+    $row = $result -> fetch_assoc();
+    $content = json_decode($row["content"]);
+    if (!property_exists($content, $id)) {
+       echo json_encode(["error"=>true]);
+       return; 
+    }
+    $content->$id->qtd = $content->$id->qtd - 1;
+    $content_value = $content->$id->qtd;
+    
+    if ($content_value == 0) {
+        unset($content->$id);
+    }
+    $content = json_encode($content);  
+    $initial = "UPDATE carrinho SET content = '$content' WHERE id_user = $userId";
+    $result = $conexao -> query($initial);
+    echo json_encode($content);
+    return;
+} catch (\Throwable $th) {
+    //throw $th;
+}
 
-if($result = mysqli_query($conexao,"INSERT INTO carrinho (id_user, content)
- VALUES ($userId,$id)"); === TRUE) {echo "New record created successfully";}
- else {echo "Error: ";        
- }
-
- 
 //  ^^ tu tem o Id do produto acima 
 // chamar a tabela carrinho e adicionar o ID
 // vale lembrar que: a tabela é feita de
@@ -24,4 +41,3 @@ if($result = mysqli_query($conexao,"INSERT INTO carrinho (id_user, content)
 // user1 | {<idDoProduto1>: {qtd: numero de vezes que foi chamado}}
 // tem que fazer um select do db + remover um no qtd
 
-echo json_encode(['id' => $id]);

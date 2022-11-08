@@ -24,7 +24,8 @@ $mock = [
     'descricao' => 'Product 1 description',
     'tipo' => 'Category 1',
     'url' => 'https://bobbyhadz.com/images/blog/javascript-syntaxerror-cannot-use-import-statement-outside-module/banner.webp',
-    'marca' => 'Marca 1'
+    'marca' => 'Marca 1',
+    'qtd' => 3
   ],
   [
     'id' => 2,
