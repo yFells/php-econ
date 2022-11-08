@@ -1,5 +1,9 @@
 import { $ } from "./../scripts/ui/index.js";
 import { query } from "./../scripts/network/index.js";
+import { LoginComponent } from "../login/LoginComponent.js";
+import { RegisterComponent } from "./RegisterComponent.js";
+
+let prevState;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const repeat = async (fn, t) => {
@@ -35,4 +39,41 @@ async function register(e) {
   }
 }
 
+async function login(e) {
+  e.preventDefault();
+  try {
+    const formLogin = $("form-login");
+    const { data, error } = await query("./login.php", {
+      body: new FormData(formLogin),
+      method: "POST",
+    });
+
+    if (!data.loggedIn) {
+      return;
+    }
+
+    localStorage.setItem("user", JSON.stringify(data));
+
+    window.location = "/";
+  } catch (error) {}
+}
+
+function mountLogin() {
+  const email = $("email").value;
+  prevState = $("main").innerHTML;
+  $("main").innerHTML = LoginComponent(email);
+}
+
+function mountRegister() {
+  const email = $("email").value;
+  prevState = $("main").innerHTML;
+  $("main").innerHTML = RegisterComponent(email);
+}
+
+window.onload = function () {
+  $("main").innerHTML = RegisterComponent('');
+}
+window.mountLogin = mountLogin;
+window.mountRegister = mountRegister;
+window.login = login;
 window.register = register;

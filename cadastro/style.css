@@ -7,6 +7,7 @@ main {
 
 form {
   display: flex;
+  margin: 15px;
   align-items: center;
   flex-direction: column;
   gap: 3vh;
@@ -20,9 +21,18 @@ form input {
 form button {
   width: 40%;
 }
+
 .passwords-mismatch {
   color: red;
 }
+
 h3 {
   margin-top: 2vh;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px;
 }
