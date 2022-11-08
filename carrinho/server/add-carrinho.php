@@ -12,8 +12,6 @@ $rows = array();
 
 
 
-// Associative array
-
 
 
 try {

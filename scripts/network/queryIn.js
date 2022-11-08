@@ -9,7 +9,6 @@
  * @returns 
  */
 export async function query(url, {extraHeaders, body, method, ...args} = {}) {
-console.log(body) 
   try {
     const response = await fetch(url, {
       method: method || "GET",
@@ -18,7 +17,6 @@ console.log(body)
       },
       body
     });
-    console.log(response)
     return {
       data: await response.json(),
       error: null,

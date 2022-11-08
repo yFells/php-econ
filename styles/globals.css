@@ -56,3 +56,24 @@ img {
   max-width: 200px;
   max-height: 200px;
 }
+
+a {
+  color: var(--primary-blue);
+}
+
+a:hover {
+  color: var(--primary-grey);
+}
+
+form input {
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--secondary-gray);
+  transition: .3s ease-in-out;
+}
+
+form input:hover,
+form input:focus {
+  outline: none;
+
+}

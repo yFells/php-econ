@@ -14,4 +14,11 @@ $cpf = $body["cpf"];
 $query = "INSERT INTO user (nome, email, senha, cpf) VALUES ('$nome', '$email', '$senha', '$cpf')";
 $register = mysqli_query($conexao, $query);  
 
+$initial = "SELECT id FROM user WHERE email = '$email'";
+$result = $conexao -> query($initial);
+$row = $result -> fetch_assoc();
+$fora = $row['id'];
+$query = "INSERT INTO carrinho (id_user) VALUES ('$fora')";
+$result = $conexao -> query($query);
+
 echo json_encode($register);
