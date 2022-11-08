@@ -56,3 +56,11 @@ img {
   max-width: 200px;
   max-height: 200px;
 }
+
+a {
+  color: var(--primary-blue);
+}
+
+a:hover {
+  color: var(--primary-grey);
+}
