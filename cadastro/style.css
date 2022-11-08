@@ -1,1 +1,28 @@
 @import url('../styles/globals.css');
+
+main {
+  text-align: center;
+  margin: 2vh;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+
+form input {
+  width: 60%;
+}
+
+form button {
+  width: 40%;
+}
+.passwords-mismatch {
+  color: red;
+}
+h3 {
+  margin-top: 2vh;
+}

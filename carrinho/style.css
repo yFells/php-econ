@@ -7,6 +7,14 @@ main {
   justify-content: flex-start;
 }
 
+nav {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .card-content {
   display: flex;
   width: 100%;
@@ -18,10 +26,12 @@ main {
   border-top: 1px solid #000;
   justify-content: space-around;
 }
+
 .card-content p {
   margin: 10px;
   background: #fff;
 }
+
 .card-content b {
   background: #fff;
 }
