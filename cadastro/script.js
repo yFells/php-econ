@@ -41,10 +41,14 @@ async function register(e) {
 
 async function login(e) {
   e.preventDefault();
+  const body = {
+    email: $("email").value,
+    password: $("password").value,
+  }
   try {
     const formLogin = $("form-login");
     const { data, error } = await query("./login.php", {
-      body: new FormData(formLogin),
+      body: JSON.stringify({body}),
       method: "POST",
     });
 
