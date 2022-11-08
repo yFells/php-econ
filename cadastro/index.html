@@ -6,15 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Faça login ou crie sua conta</title>
   <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" href="../public/images/Group3.svg">
   <script defer type="module" src="./script.js"></script>
 </head>
 <body>
   <header class="header">
-    <a href="/"><img src="../img/logo.svg" alt="logo gaming shop"></a>
-    <a href="/produtos/" class="products"><span>Produtos</span></a>
-    <a href="/carrinho/"><img src="../img/cart.svg" alt="carrinho"></a>
+    <a href="/">
+      <img src="../public/images/Group3.svg" alt="logo">
+    </a>
+    <a href="/produtos" class="products"><span>Produtos</span></a>
+    <a href="/carrinho">
+      Carrinho
+    </a>
   </header>
-  <div class="container form-container">
+  <div >
     <div id="container-register">
       <h1>Faça seu registro</h1>
       <form onsubmit="event.preventDefault(); register()" class="base-form" id="form-register" method="post"> 
@@ -22,6 +27,7 @@
         <input type="text" name="cpf" id="cpf" placeholder="Seu CPF" maxlength="11"> 
         <input type="email" name="email" id="email" placeholder="Seu e-mail">
         <input type="password" name="password" id="password" placeholder="Sua senha">
+        <input type="password" name="password" id="password-confirmation" placeholder="confirme sua senha">
         <button type="submit" id="btn-register">Registrar</button>
       </form>  
     </div>

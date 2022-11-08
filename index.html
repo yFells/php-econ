@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/home.css">
+    <link rel="icon" type="image/png" href="./public/images/Group3.svg">
     <title>Home</title>
+    <script type="module" defer>
+        const isLogged = localStorage.getItem('user');
+        if (!isLogged) window.location.href = './login';
+    </script>
 </head>
 <body>
     <header class="header">
@@ -15,7 +20,7 @@
         <ul>
             
                 <a href="/">
-                    <img src="https://pbs.twimg.com/media/FgkVExQakAEUWPs?format=png&name=small" alt="logo">
+                    <img src="./public/images/Group3.svg" alt="logo">
                 </a>
             
             <a href="/produtos">Produtos</a>
