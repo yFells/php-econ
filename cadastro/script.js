@@ -29,9 +29,14 @@ async function register(e) {
     return;
   }
   try {
-    const registerForm = $("form-register");
+    const body = {
+      email: $("email").value,
+      password,
+      cpf: $("cpf").value,
+      name:$("name").value
+    }
     const { data, error } = await query("./register.php", {
-      body: new FormData(registerForm),
+      body: JSON.stringify({body}),
       method: "POST",
     });
   } catch (error) {
@@ -46,7 +51,6 @@ async function login(e) {
     password: $("password").value,
   }
   try {
-    const formLogin = $("form-login");
     const { data, error } = await query("./login.php", {
       body: JSON.stringify({body}),
       method: "POST",

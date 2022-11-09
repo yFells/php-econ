@@ -5,6 +5,15 @@
   scrollbar-color: var(--secondary-blue);
 }
 
+:root {
+  --primary-black: #272932;
+  --primary-blue: #4D7EA8;
+  --primary-grey: #828489;
+  --secondary-gray: #CED4D9;
+  --secondary-blue: #B6C2D9;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 html {
   overflow-x: hidden;
   padding: 0 10px;
@@ -43,14 +52,6 @@ button:hover {
   color: var(--secondary-blue);
 }
 
-:root {
-  --primary-black: #272932;
-  --primary-blue: #4D7EA8;
-  --primary-grey: #828489;
-  --secondary-gray: #CED4D9;
-  --secondary-blue: #B6C2D9;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 img {
   max-width: 200px;

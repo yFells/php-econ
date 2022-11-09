@@ -8,7 +8,7 @@
  * @param {object} options.headers 
  * @returns 
  */
-export async function query(url, {extraHeaders, body, method, ...args} = {}) {
+export async function query(url, {extraHeaders, body, method} = {}) {
   try {
     const response = await fetch(url, {
       method: method || "GET",
