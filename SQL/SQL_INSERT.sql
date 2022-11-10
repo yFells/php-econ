@@ -1,6 +1,6 @@
 # INSERTS PRODUTOS
 
-INSERT INTO `produtos`(nome,valor,descricao,tipo,url,marcar) VALUES 
+INSERT INTO `produtos`(nome,valor,descricao,tipo,url,marca) VALUES 
 ("coleira", 15.0, "Coleira pra cachorro tamanho 1.5M","vestimenta","https://www.shutterstock.com/shutterstock/photos/1778629628/display_1500/stock-photo-blank-dog-adjustable-collar-belt-mock-up-for-branding-and-design-d-render-illustration-1778629628.jpg","dogshow"),
 ("arranha gato", 50.0, "Poste para gato arranhar 35 cm","movel","https://www.shutterstock.com/shutterstock/photos/1963701784/display_1500/stock-vector-vector-illustration-of-a-scratching-post-for-cats-and-a-toy-in-the-form-of-a-mouse-isolated-on-a-1963701784.jpg", "Catslife"),
 ("caminha cachorro", 35.0, "caminha para cachorro pequeno", "movel", "https://www.shutterstock.com/shutterstock/photos/1964188303/display_1500/stock-vector-stylish-pet-bed-plank-bed-for-cats-and-dogs-soft-bed-for-pets-with-a-toy-isolated-on-a-white-1964188303.jpg","dogshow"),
